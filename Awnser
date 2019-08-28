@@ -1,0 +1,21 @@
+def histogram(rolls):
+    r = ''
+    maxrolls = max(rolls)
+    while maxrolls >= 0:
+        time = ''
+        for i in rolls:
+            if maxrolls == i and i != 0:
+                time += str(i)
+                if i < 10:
+                    time += ' '
+            if maxrolls > i and ((len(time) > 0 and time[-1] != '') or len(time) == 0):
+                time += '  '
+                continue
+            if maxrolls < i:
+                time += '# '
+            if i == 0 and any(x != 0 for x in rolls):
+                time += '  '
+        r += (time.rstrip() + '\n')
+        maxrolls -= 1
+    r += '-----------\n1 2 3 4 5 6\n'
+    return r
